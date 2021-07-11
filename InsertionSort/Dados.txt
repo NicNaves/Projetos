@@ -1,0 +1,205 @@
+InsertionSort:
+1 ->
+ Performance counter stats for './insertionsort':
+
+        563.920,93 msec task-clock                #    0,988 CPUs utilized          
+           154.331      context-switches          #    0,274 K/sec                  
+               913      cpu-migrations            #    0,002 K/sec                  
+             1.091      page-faults               #    0,002 K/sec                  
+ 2.357.356.495.349      cycles                    #    4,180 GHz                      (83,35%)
+     2.151.176.690      stalled-cycles-frontend   #    0,09% frontend cycles idle     (83,28%)
+ 1.452.514.198.307      stalled-cycles-backend    #   61,62% backend cycles idle      (83,32%)
+ 6.250.549.394.226      instructions              #    2,65  insn per cycle         
+                                                  #    0,23  stalled cycles per insn  (83,34%)
+   750.519.401.158      branches                  # 1330,895 M/sec                    (83,33%)
+        59.063.520      branch-misses             #    0,01% of all branches          (83,38%)
+
+     570,753570572 seconds time elapsed
+
+     561,349207000 seconds user
+       2,238740000 seconds sys
+-----------------------------------------------------------------------------
+2 ->
+ Performance counter stats for './insertionsort':
+
+        590.148,10 msec task-clock                #    0,988 CPUs utilized          
+           143.994      context-switches          #    0,244 K/sec                  
+             1.346      cpu-migrations            #    0,002 K/sec                  
+             1.092      page-faults               #    0,002 K/sec                  
+ 2.464.835.411.360      cycles                    #    4,177 GHz                      (83,35%)
+     2.328.388.579      stalled-cycles-frontend   #    0,09% frontend cycles idle     (83,35%)
+ 1.507.874.070.451      stalled-cycles-backend    #   61,18% backend cycles idle      (83,30%)
+ 6.254.362.489.564      instructions              #    2,54  insn per cycle         
+                                                  #    0,24  stalled cycles per insn  (83,33%)
+   751.118.186.759      branches                  # 1272,762 M/sec                    (83,34%)
+        62.812.259      branch-misses             #    0,01% of all branches          (83,33%)
+
+     597,445694964 seconds time elapsed
+
+     586,965487000 seconds user
+       2,833576000 seconds sys
+
+-----------------------------------------------------------------------------
+3 ->
+ Performance counter stats for './insertionsort':
+
+        608.154,58 msec task-clock                #    0,988 CPUs utilized          
+           131.083      context-switches          #    0,216 K/sec                  
+             1.113      cpu-migrations            #    0,002 K/sec                  
+             1.092      page-faults               #    0,002 K/sec                  
+ 2.538.857.325.943      cycles                    #    4,175 GHz                      (83,36%)
+     2.536.134.231      stalled-cycles-frontend   #    0,10% frontend cycles idle     (83,31%)
+ 1.425.953.264.554      stalled-cycles-backend    #   56,17% backend cycles idle      (83,33%)
+ 6.256.184.522.504      instructions              #    2,46  insn per cycle         
+                                                  #    0,23  stalled cycles per insn  (83,31%)
+   751.395.155.170      branches                  # 1235,533 M/sec                    (83,36%)
+        74.544.100      branch-misses             #    0,01% of all branches          (83,33%)
+
+     615,774047381 seconds time elapsed
+
+     604,272908000 seconds user
+       3,523515000 seconds sys
+
+----------------------------------------------------------------------------
+4 ->
+ Performance counter stats for './insertionsort':
+
+        538.773,76 msec task-clock                #    0,991 CPUs utilized          
+            93.251      context-switches          #    0,173 K/sec                  
+             2.936      cpu-migrations            #    0,005 K/sec                  
+             1.092      page-faults               #    0,002 K/sec                  
+ 2.252.324.826.730      cycles                    #    4,180 GHz                      (83,27%)
+     1.661.184.371      stalled-cycles-frontend   #    0,07% frontend cycles idle     (83,32%)
+ 1.531.903.549.363      stalled-cycles-backend    #   68,01% backend cycles idle      (83,40%)
+ 6.253.566.108.036      instructions              #    2,78  insn per cycle         
+                                                  #    0,24  stalled cycles per insn  (83,33%)
+   750.142.466.333      branches                  # 1392,314 M/sec                    (83,34%)
+        33.357.546      branch-misses             #    0,00% of all branches          (83,35%)
+
+     543,506347587 seconds time elapsed
+
+     537,000741000 seconds user
+       1,569675000 seconds sys
+-----------------------------------------------------------------------------
+5->
+ Performance counter stats for './insertionsort':
+
+        551.590,51 msec task-clock                #    0,990 CPUs utilized          
+           103.510      context-switches          #    0,188 K/sec                  
+             1.806      cpu-migrations            #    0,003 K/sec                  
+             1.091      page-faults               #    0,002 K/sec                  
+ 2.304.508.890.883      cycles                    #    4,178 GHz                      (83,30%)
+     1.902.254.722      stalled-cycles-frontend   #    0,08% frontend cycles idle     (83,32%)
+ 1.442.194.002.822      stalled-cycles-backend    #   62,58% backend cycles idle      (83,41%)
+ 6.245.395.785.823      instructions              #    2,71  insn per cycle         
+                                                  #    0,23  stalled cycles per insn  (83,29%)
+   749.917.272.217      branches                  # 1359,554 M/sec                    (83,34%)
+        50.557.575      branch-misses             #    0,01% of all branches          (83,34%)
+
+     557,176582077 seconds time elapsed
+
+     548,942337000 seconds user
+       2,384378000 seconds sys
+
+----------------------------------------------------------------------------
+6 ->
+ Performance counter stats for './insertionsort':
+
+        557.516,01 msec task-clock                #    0,993 CPUs utilized          
+            95.701      context-switches          #    0,172 K/sec                  
+             2.424      cpu-migrations            #    0,004 K/sec                  
+             1.091      page-faults               #    0,002 K/sec                  
+ 2.332.077.064.445      cycles                    #    4,183 GHz                      (83,34%)
+     1.827.640.011      stalled-cycles-frontend   #    0,08% frontend cycles idle     (83,38%)
+ 1.534.026.712.287      stalled-cycles-backend    #   65,78% backend cycles idle      (83,28%)
+ 6.250.178.965.893      instructions              #    2,68  insn per cycle         
+                                                  #    0,25  stalled cycles per insn  (83,36%)
+   750.469.633.662      branches                  # 1346,095 M/sec                    (83,27%)
+        40.574.367      branch-misses             #    0,01% of all branches          (83,38%)
+
+     561,659721683 seconds time elapsed
+
+     555,702704000 seconds user
+       1,569228000 seconds sys
+----------------------------------------------------------------------------
+7 ->
+ Performance counter stats for './insertionsort':
+
+        544.330,02 msec task-clock                #    0,991 CPUs utilized          
+            91.931      context-switches          #    0,169 K/sec                  
+             2.132      cpu-migrations            #    0,004 K/sec                  
+             1.090      page-faults               #    0,002 K/sec                  
+ 2.274.681.611.170      cycles                    #    4,179 GHz                      (83,35%)
+     2.004.086.922      stalled-cycles-frontend   #    0,09% frontend cycles idle     (83,33%)
+ 1.470.167.080.928      stalled-cycles-backend    #   64,63% backend cycles idle      (83,34%)
+ 6.255.146.751.465      instructions              #    2,75  insn per cycle         
+                                                  #    0,24  stalled cycles per insn  (83,32%)
+   750.559.680.691      branches                  # 1378,869 M/sec                    (83,34%)
+        39.328.704      branch-misses             #    0,01% of all branches          (83,31%)
+
+     549,152431091 seconds time elapsed
+
+     542,197759000 seconds user
+       1,857074000 seconds sys
+----------------------------------------------------------------------------
+8 ->
+ Performance counter stats for './insertionsort':
+
+        595.770,94 msec task-clock                #    0,991 CPUs utilized          
+           101.998      context-switches          #    0,171 K/sec                  
+             1.084      cpu-migrations            #    0,002 K/sec                  
+             1.092      page-faults               #    0,002 K/sec                  
+ 2.490.618.725.066      cycles                    #    4,180 GHz                      (83,34%)
+     2.355.837.073      stalled-cycles-frontend   #    0,09% frontend cycles idle     (83,34%)
+ 1.449.000.909.637      stalled-cycles-backend    #   58,18% backend cycles idle      (83,29%)
+ 6.259.883.505.750      instructions              #    2,51  insn per cycle         
+                                                  #    0,23  stalled cycles per insn  (83,31%)
+   751.401.111.025      branches                  # 1261,225 M/sec                    (83,39%)
+        52.766.402      branch-misses             #    0,01% of all branches          (83,33%)
+
+     601,454813600 seconds time elapsed
+
+     593,089562000 seconds user
+       2,291894000 seconds sys
+----------------------------------------------------------------------------
+9 ->
+ Performance counter stats for './insertionsort':
+
+        583.170,20 msec task-clock                #    0,992 CPUs utilized          
+            99.512      context-switches          #    0,171 K/sec                  
+             1.288      cpu-migrations            #    0,002 K/sec                  
+             1.090      page-faults               #    0,002 K/sec                  
+ 2.439.057.466.241      cycles                    #    4,182 GHz                      (83,38%)
+     2.236.809.887      stalled-cycles-frontend   #    0,09% frontend cycles idle     (83,36%)
+ 1.532.821.034.927      stalled-cycles-backend    #   62,84% backend cycles idle      (83,41%)
+ 6.250.939.601.101      instructions              #    2,56  insn per cycle         
+                                                  #    0,25  stalled cycles per insn  (83,16%)
+   750.649.792.934      branches                  # 1287,188 M/sec                    (83,31%)
+        48.786.746      branch-misses             #    0,01% of all branches          (83,36%)
+
+     588,090409683 seconds time elapsed
+
+     580,828844000 seconds user
+       1,972471000 seconds sys
+---------------------------------------------------------------------------
+10 ->
+ Performance counter stats for './insertionsort':
+
+        593.120,39 msec task-clock                #    0,993 CPUs utilized          
+            99.212      context-switches          #    0,167 K/sec                  
+             1.103      cpu-migrations            #    0,002 K/sec                  
+             1.092      page-faults               #    0,002 K/sec                  
+ 2.482.686.592.249      cycles                    #    4,186 GHz                      (83,30%)
+     2.223.892.006      stalled-cycles-frontend   #    0,09% frontend cycles idle     (83,42%)
+ 1.532.325.137.373      stalled-cycles-backend    #   61,72% backend cycles idle      (83,27%)
+ 6.247.273.781.520      instructions              #    2,52  insn per cycle         
+                                                  #    0,25  stalled cycles per insn  (83,35%)
+   750.187.384.454      branches                  # 1264,815 M/sec                    (83,23%)
+        47.390.333      branch-misses             #    0,01% of all branches          (83,43%)
+
+     597,325361322 seconds time elapsed
+
+     591,007742000 seconds user
+       1,749122000 seconds sys
+
+-----------------------------------------------------------------------------

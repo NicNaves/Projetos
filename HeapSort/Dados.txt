@@ -1,0 +1,220 @@
+HeapSort
+
+ Performance counter stats for './heapsort':
+
+            328,53 msec task-clock                #    0,998 CPUs utilized          
+                37      context-switches          #    0,113 K/sec                  
+                 3      cpu-migrations            #    0,009 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.377.160.423      cycles                    #    4,192 GHz                      (82,96%)
+        13.352.992      stalled-cycles-frontend   #    0,97% frontend cycles idle     (82,97%)
+       345.619.246      stalled-cycles-backend    #   25,10% backend cycles idle      (82,97%)
+     2.509.431.664      instructions              #    1,82  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (83,67%)
+       331.623.162      branches                  # 1009,413 M/sec                    (84,18%)
+        11.275.344      branch-misses             #    3,40% of all branches          (83,25%)
+
+       0,329098791 seconds time elapsed
+
+       0,328665000 seconds user
+       0,000000000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            326,11 msec task-clock                #    0,999 CPUs utilized          
+                36      context-switches          #    0,110 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.367.120.483      cycles                    #    4,192 GHz                      (82,84%)
+        13.022.815      stalled-cycles-frontend   #    0,95% frontend cycles idle     (82,84%)
+       354.459.305      stalled-cycles-backend    #   25,93% backend cycles idle      (82,98%)
+     2.505.765.524      instructions              #    1,83  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (84,07%)
+       332.642.787      branches                  # 1020,018 M/sec                    (84,07%)
+        11.182.787      branch-misses             #    3,36% of all branches          (83,20%)
+
+       0,326562252 seconds time elapsed
+
+       0,322150000 seconds user
+       0,004026000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            334,27 msec task-clock                #    0,998 CPUs utilized          
+                45      context-switches          #    0,135 K/sec                  
+                 1      cpu-migrations            #    0,003 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.401.143.999      cycles                    #    4,192 GHz                      (83,29%)
+        14.019.599      stalled-cycles-frontend   #    1,00% frontend cycles idle     (83,26%)
+       361.972.505      stalled-cycles-backend    #   25,83% backend cycles idle      (83,27%)
+     2.496.472.061      instructions              #    1,78  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (83,27%)
+       332.025.863      branches                  #  993,282 M/sec                    (83,28%)
+        11.194.730      branch-misses             #    3,37% of all branches          (83,63%)
+
+       0,334994801 seconds time elapsed
+
+       0,322381000 seconds user
+       0,011940000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            325,55 msec task-clock                #    0,998 CPUs utilized          
+                46      context-switches          #    0,141 K/sec                  
+                 2      cpu-migrations            #    0,006 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.364.708.702      cycles                    #    4,192 GHz                      (82,81%)
+        13.333.492      stalled-cycles-frontend   #    0,98% frontend cycles idle     (82,82%)
+       354.883.733      stalled-cycles-backend    #   26,00% backend cycles idle      (83,06%)
+     2.498.044.544      instructions              #    1,83  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (84,04%)
+       331.561.354      branches                  # 1018,471 M/sec                    (84,04%)
+        11.175.312      branch-misses             #    3,37% of all branches          (83,24%)
+
+       0,326342445 seconds time elapsed
+
+       0,325724000 seconds user
+       0,000000000 seconds sys
+
+---------------------------------------------------------------------------------------------------
+
+
+ Performance counter stats for './heapsort':
+
+            323,25 msec task-clock                #    0,996 CPUs utilized          
+                60      context-switches          #    0,186 K/sec                  
+                 1      cpu-migrations            #    0,003 K/sec                  
+             1.088      page-faults               #    0,003 M/sec                  
+     1.355.054.611      cycles                    #    4,192 GHz                      (82,76%)
+        13.731.434      stalled-cycles-frontend   #    1,01% frontend cycles idle     (82,72%)
+       361.935.877      stalled-cycles-backend    #   26,71% backend cycles idle      (83,16%)
+     2.501.843.266      instructions              #    1,85  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (83,96%)
+       332.220.706      branches                  # 1027,744 M/sec                    (83,95%)
+        11.085.858      branch-misses             #    3,34% of all branches          (83,45%)
+
+       0,324497864 seconds time elapsed
+
+       0,319321000 seconds user
+       0,003991000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            318,74 msec task-clock                #    0,997 CPUs utilized          
+                50      context-switches          #    0,157 K/sec                  
+                 4      cpu-migrations            #    0,013 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.336.385.113      cycles                    #    4,193 GHz                      (82,47%)
+        12.736.925      stalled-cycles-frontend   #    0,95% frontend cycles idle     (83,57%)
+       360.379.498      stalled-cycles-backend    #   26,97% backend cycles idle      (83,72%)
+     2.497.471.382      instructions              #    1,87  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (83,71%)
+       331.201.705      branches                  # 1039,109 M/sec                    (83,72%)
+        11.179.215      branch-misses             #    3,38% of all branches          (82,81%)
+
+       0,319751966 seconds time elapsed
+
+       0,314878000 seconds user
+       0,003985000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            326,73 msec task-clock                #    0,999 CPUs utilized          
+                35      context-switches          #    0,107 K/sec                  
+                 1      cpu-migrations            #    0,003 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.369.609.457      cycles                    #    4,192 GHz                      (82,87%)
+        12.748.391      stalled-cycles-frontend   #    0,93% frontend cycles idle     (82,87%)
+       349.611.315      stalled-cycles-backend    #   25,53% backend cycles idle      (82,88%)
+     2.500.339.191      instructions              #    1,83  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (84,03%)
+       332.280.895      branches                  # 1016,987 M/sec                    (84,10%)
+        11.274.039      branch-misses             #    3,39% of all branches          (83,25%)
+
+       0,327198611 seconds time elapsed
+
+       0,326796000 seconds user
+       0,000000000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            321,92 msec task-clock                #    0,996 CPUs utilized          
+                48      context-switches          #    0,149 K/sec                  
+                 1      cpu-migrations            #    0,003 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.349.548.022      cycles                    #    4,192 GHz                      (82,63%)
+        13.624.023      stalled-cycles-frontend   #    1,01% frontend cycles idle     (82,69%)
+       354.347.799      stalled-cycles-backend    #   26,26% backend cycles idle      (83,89%)
+     2.498.881.020      instructions              #    1,85  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (83,89%)
+       331.182.382      branches                  # 1028,786 M/sec                    (83,88%)
+        11.217.056      branch-misses             #    3,39% of all branches          (83,03%)
+
+       0,323262998 seconds time elapsed
+
+       0,322056000 seconds user
+       0,000000000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            323,05 msec task-clock                #    0,997 CPUs utilized          
+                58      context-switches          #    0,180 K/sec                  
+                 2      cpu-migrations            #    0,006 K/sec                  
+             1.088      page-faults               #    0,003 M/sec                  
+     1.354.195.973      cycles                    #    4,192 GHz                      (82,69%)
+        12.923.454      stalled-cycles-frontend   #    0,95% frontend cycles idle     (82,71%)
+       352.284.327      stalled-cycles-backend    #   26,01% backend cycles idle      (82,95%)
+     2.507.393.948      instructions              #    1,85  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (83,91%)
+       332.045.857      branches                  # 1027,857 M/sec                    (83,94%)
+        11.097.527      branch-misses             #    3,34% of all branches          (83,80%)
+
+       0,323883446 seconds time elapsed
+
+       0,319096000 seconds user
+       0,003988000 seconds sys
+
+
+---------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './heapsort':
+
+            322,83 msec task-clock                #    0,995 CPUs utilized          
+                60      context-switches          #    0,186 K/sec                  
+                 4      cpu-migrations            #    0,012 K/sec                  
+             1.089      page-faults               #    0,003 M/sec                  
+     1.353.327.930      cycles                    #    4,192 GHz                      (82,67%)
+        12.841.068      stalled-cycles-frontend   #    0,95% frontend cycles idle     (81,83%)
+       349.429.355      stalled-cycles-backend    #   25,82% backend cycles idle      (83,89%)
+     2.499.250.076      instructions              #    1,85  insn per cycle         
+                                                  #    0,14  stalled cycles per insn  (84,02%)
+       330.847.388      branches                  # 1024,846 M/sec                    (83,90%)
+        11.132.531      branch-misses             #    3,36% of all branches          (83,69%)
+
+       0,324321743 seconds time elapsed
+
+       0,322968000 seconds user
+       0,000000000 seconds sys
+
+---------------------------------------------------------------------------------------------------

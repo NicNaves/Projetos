@@ -1,0 +1,221 @@
+MergeSort Bup:
+
+ 
+ Performance counter stats for './mergesort':
+
+            176,44 msec task-clock                #    0,997 CPUs utilized          
+                18      context-switches          #    0,102 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+             2.064      page-faults               #    0,012 M/sec                  
+       739.752.860      cycles                    #    4,193 GHz                      (81,89%)
+        10.987.177      stalled-cycles-frontend   #    1,49% frontend cycles idle     (83,07%)
+       241.267.588      stalled-cycles-backend    #   32,61% backend cycles idle      (84,14%)
+     1.177.935.349      instructions              #    1,59  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (84,14%)
+       168.401.315      branches                  #  954,463 M/sec                    (84,14%)
+         9.704.355      branch-misses             #    5,76% of all branches          (82,62%)
+
+       0,176926953 seconds time elapsed
+
+       0,176674000 seconds user
+       0,000000000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            182,14 msec task-clock                #    0,997 CPUs utilized          
+                19      context-switches          #    0,104 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+             2.066      page-faults               #    0,011 M/sec                  
+       763.564.241      cycles                    #    4,192 GHz                      (82,45%)
+        11.786.964      stalled-cycles-frontend   #    1,54% frontend cycles idle     (82,44%)
+       234.258.446      stalled-cycles-backend    #   30,68% backend cycles idle      (82,70%)
+     1.180.371.487      instructions              #    1,55  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (84,64%)
+       169.010.792      branches                  #  927,914 M/sec                    (84,63%)
+         9.567.644      branch-misses             #    5,66% of all branches          (83,13%)
+
+       0,182631072 seconds time elapsed
+
+       0,178303000 seconds user
+       0,004052000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            178,79 msec task-clock                #    0,998 CPUs utilized          
+                18      context-switches          #    0,101 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+             2.066      page-faults               #    0,012 M/sec                  
+       749.589.550      cycles                    #    4,193 GHz                      (82,11%)
+        10.749.573      stalled-cycles-frontend   #    1,43% frontend cycles idle     (82,24%)
+       240.505.569      stalled-cycles-backend    #   32,08% backend cycles idle      (84,36%)
+     1.177.856.736      instructions              #    1,57  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (84,34%)
+       168.761.001      branches                  #  943,907 M/sec                    (84,35%)
+         9.684.341      branch-misses             #    5,74% of all branches          (82,60%)
+
+       0,179116687 seconds time elapsed
+
+       0,178873000 seconds user
+       0,000000000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            183,67 msec task-clock                #    0,997 CPUs utilized          
+                21      context-switches          #    0,114 K/sec                  
+                 1      cpu-migrations            #    0,005 K/sec                  
+             2.066      page-faults               #    0,011 M/sec                  
+       769.722.624      cycles                    #    4,191 GHz                      (82,60%)
+        12.101.630      stalled-cycles-frontend   #    1,57% frontend cycles idle     (82,60%)
+       228.130.095      stalled-cycles-backend    #   29,64% backend cycles idle      (82,58%)
+     1.182.080.028      instructions              #    1,54  insn per cycle         
+                                                  #    0,19  stalled cycles per insn  (84,23%)
+       169.356.732      branches                  #  922,076 M/sec                    (84,77%)
+         9.696.316      branch-misses             #    5,73% of all branches          (83,22%)
+
+       0,184174484 seconds time elapsed
+
+       0,179836000 seconds user
+       0,003996000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            176,43 msec task-clock                #    0,997 CPUs utilized          
+                35      context-switches          #    0,198 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+             2.065      page-faults               #    0,012 M/sec                  
+       739.588.592      cycles                    #    4,192 GHz                      (81,90%)
+        12.062.865      stalled-cycles-frontend   #    1,63% frontend cycles idle     (82,68%)
+       232.645.928      stalled-cycles-backend    #   31,46% backend cycles idle      (84,23%)
+     1.174.508.622      instructions              #    1,59  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (84,14%)
+       168.705.690      branches                  #  956,237 M/sec                    (84,16%)
+         9.688.625      branch-misses             #    5,74% of all branches          (82,88%)
+
+       0,177040545 seconds time elapsed
+
+       0,176485000 seconds user
+       0,000000000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            176,05 msec task-clock                #    0,997 CPUs utilized          
+                25      context-switches          #    0,142 K/sec                  
+                 1      cpu-migrations            #    0,006 K/sec                  
+             2.065      page-faults               #    0,012 M/sec                  
+       738.045.303      cycles                    #    4,192 GHz                      (81,83%)
+        10.820.787      stalled-cycles-frontend   #    1,47% frontend cycles idle     (83,37%)
+       237.963.409      stalled-cycles-backend    #   32,24% backend cycles idle      (84,11%)
+     1.183.837.082      instructions              #    1,60  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (84,15%)
+       169.236.888      branches                  #  961,318 M/sec                    (84,10%)
+         9.736.003      branch-misses             #    5,75% of all branches          (82,44%)
+
+       0,176578306 seconds time elapsed
+
+       0,176206000 seconds user
+       0,000000000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            178,01 msec task-clock                #    0,995 CPUs utilized          
+                26      context-switches          #    0,146 K/sec                  
+                 1      cpu-migrations            #    0,006 K/sec                  
+             2.064      page-faults               #    0,012 M/sec                  
+       746.096.188      cycles                    #    4,191 GHz                      (82,15%)
+        11.815.729      stalled-cycles-frontend   #    1,58% frontend cycles idle     (82,83%)
+       238.865.256      stalled-cycles-backend    #   32,02% backend cycles idle      (82,07%)
+     1.170.820.919      instructions              #    1,57  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (84,38%)
+       168.880.775      branches                  #  948,734 M/sec                    (84,34%)
+         9.572.993      branch-misses             #    5,67% of all branches          (84,24%)
+
+       0,178831731 seconds time elapsed
+
+       0,178097000 seconds user
+       0,000000000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            175,02 msec task-clock                #    0,996 CPUs utilized          
+                28      context-switches          #    0,160 K/sec                  
+                 2      cpu-migrations            #    0,011 K/sec                  
+             2.064      page-faults               #    0,012 M/sec                  
+       733.591.554      cycles                    #    4,192 GHz                      (81,77%)
+        11.525.168      stalled-cycles-frontend   #    1,57% frontend cycles idle     (83,86%)
+       238.032.419      stalled-cycles-backend    #   32,45% backend cycles idle      (84,07%)
+     1.184.995.849      instructions              #    1,62  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (84,03%)
+       168.667.649      branches                  #  963,716 M/sec                    (84,02%)
+         9.676.735      branch-misses             #    5,74% of all branches          (82,25%)
+
+       0,175668510 seconds time elapsed
+
+       0,171145000 seconds user
+       0,004074000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            174,65 msec task-clock                #    0,985 CPUs utilized          
+                63      context-switches          #    0,361 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+             2.064      page-faults               #    0,012 M/sec                  
+       732.058.664      cycles                    #    4,191 GHz                      (82,92%)
+        12.070.559      stalled-cycles-frontend   #    1,65% frontend cycles idle     (84,02%)
+       236.453.228      stalled-cycles-backend    #   32,30% backend cycles idle      (84,32%)
+     1.180.364.308      instructions              #    1,61  insn per cycle         
+                                                  #    0,20  stalled cycles per insn  (83,96%)
+       169.478.887      branches                  #  970,372 M/sec                    (82,19%)
+         9.496.085      branch-misses             #    5,60% of all branches          (82,58%)
+
+       0,177273332 seconds time elapsed
+
+       0,166604000 seconds user
+       0,008127000 seconds sys
+
+
+-------------------------------------------------------------------------------------------------
+
+ Performance counter stats for './mergesort':
+
+            180,69 msec task-clock                #    0,998 CPUs utilized          
+                23      context-switches          #    0,127 K/sec                  
+                 1      cpu-migrations            #    0,006 K/sec                  
+             2.066      page-faults               #    0,011 M/sec                  
+       757.439.721      cycles                    #    4,192 GHz                      (82,31%)
+        12.068.693      stalled-cycles-frontend   #    1,59% frontend cycles idle     (82,31%)
+       226.198.071      stalled-cycles-backend    #   29,86% backend cycles idle      (83,53%)
+     1.174.306.252      instructions              #    1,55  insn per cycle         
+                                                  #    0,19  stalled cycles per insn  (84,51%)
+       168.785.071      branches                  #  934,102 M/sec                    (84,52%)
+         9.558.781      branch-misses             #    5,66% of all branches          (82,81%)
+
+       0,181141722 seconds time elapsed
+
+       0,180833000 seconds user
+       0,000000000 seconds sys
+
+-------------------------------------------------------------------------------------------------
