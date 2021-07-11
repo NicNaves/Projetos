@@ -1,0 +1,16 @@
+<div id="info-resultado">
+	<h1>Não foi possível cadastrar a agenda com os dados desejados.</h1>
+	<h2>Por favor, tente novamente.</h2>
+	<button type="button" class="pure-button pure-button-primary">Voltar para Agendas</button>
+</div>
+<style>
+	button {
+		margin: 20px;
+	}
+</style>
+
+<script>
+	document.querySelector('button').onclick = function () {
+		window.location.assign('http://localhost:8000/agendas');
+	};
+</script>

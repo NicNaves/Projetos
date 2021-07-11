@@ -1,0 +1,222 @@
+<div id="pagina">
+	<div id="menu-agendas">
+		<div id="menu-agendas-inside">
+			<h1 class="title">Agendas</h1>
+			<h2 class="sub-title">Preencha somente uma opção:</h2>
+			<form class="pure-form pure-form-stacked" method="POST" action="/login">
+				<label for="stacked-nome"><h3>Buscar por Cliente:</h3></label>
+				<input type="text" placeholder="Nome" name="nome">   
+				<label for="stacked-codigo"><h3>Buscar por Código:</h3></label>
+				<input type="text" placeholder="Código" name="codigo"">
+				<label for="aligned-date"><h3>Buscar por Data:</h3></label>
+				<input type="date" id="date" placeholder="Data" name="data"/>
+				<label for="data-error" style="color: red; display: none;">Erro de preenchimento</label>
+			</form>
+			<button class="pure-button pure-button-primary" id="buscar" style="margin: 15px;">Buscar</button>
+			<button class="pure-button button-success" id="criar" style="margin: 15px;">Criar</button>
+			<button class="pure-button pure-button-primary" id="limpar-filtro" style="margin: 15px; display: none;">Limpar Filtro</button>
+			
+		</div>
+	</div>
+	<div id="table">
+	<table class="pure-table pure-table-bordered" id="tabela-agendas">
+	  
+	  <thead>
+			<tr>
+				<th style="width: 7%;">Código</th>
+				<th style="width: 7%">Data</th>
+				<th style="width: 7%">Horário</th>
+				<th style="width: 20%">Cliente</th>
+				<th style="width: 10%">Telefone</th>
+				<th style="width: 30%">Observacao</th>
+				<th style="width: 15%;">Ações:</th>
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+		</tbody> 
+	</table>
+  </div>
+</div>
+<style>
+	#pagina {
+		display: flex;
+		height: 100%;
+	}
+	#menu-agendas {
+		position: relative;
+		width: 27%;
+		height: 100%;
+		text-align: center;
+		border-right: 1px solid #7c7c7c;;
+	}
+	#menu-agendas-inside {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	#menu-agendas form > * {
+		margin: 15px auto;
+		width: 60%;
+	}
+	#menu-agendas {
+		padding: 0px 0px;
+	}
+
+	#tabela-agendas {
+		width: 100%;
+	}
+
+	#tabela-agendas > tbody > tr > td:nth-child(5) {
+	margin: auto auto;
+	text-align: center;
+	}
+
+	#table {
+		position: relative;  
+		width: 100%;
+		overflow-y:scroll;
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	#menu-agendas-inside button {
+	width: 30%;
+	}
+</style>
+
+<script>
+	/********************** FUNÇÕES PARA DADOS *************************/
+
+	const table = document.querySelector('#tabela-agendas');
+	const tableBody = document.querySelector('#tabela-agendas > tbody');
+	const pagina = document.querySelector('#pagina');
+	
+	let agendasData;
+
+	async function carregarDados() {
+		const url = 'http://localhost:8000/api/agendas/index';
+		let response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json;charset=utf-8'
+			}
+		}).then(response => response.json()).then(result => {
+			agendasData = result;
+			renderizarTabela(result);
+		});
+	}
+
+	carregarDados();
+
+	/********************** FUNÇÕES PARA OS BOTÕES *************************/
+
+	const botaoBuscar = document.querySelector('#buscar');
+	const botaoLimparFiltro = document.querySelector('#limpar-filtro');
+	const botaoCriar = document.querySelector('#criar');
+
+	botaoBuscar.onclick = function() {
+		const campos = document.querySelectorAll('#menu-agendas-inside > form > input');
+		const errorLabel = document.querySelector('label[for=\'data-error\']');
+		const clearFilter = document.querySelector('#limpar-filtro');
+		if(campos[0].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const agendasFiltradas = agendasData.filter(agenda => agenda.cliente.includes(campos[0].value));
+			renderizarTabela(agendasFiltradas);
+			botaoLimparFiltro.style.display = 'initial';
+		}
+		else if (campos[1].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const agendasFiltradas = agendasData.filter(agenda => agenda.id == campos[1].value);
+			renderizarTabela(agendasFiltradas);
+			botaoLimparFiltro.style.display = 'initial';
+		}
+		else if(campos[2].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const agendasFiltradas = agendasData.filter(agenda =>{ 
+				let data = parseDate(campos[2].value); 
+
+				if(data === agenda.data) {
+					return true;
+				}
+			});
+			renderizarTabela(agendasFiltradas);
+			botaoLimparFiltro.style.display = 'initial';
+		} 
+		else {
+			errorLabel.style.display = 'initial';
+		}
+	}
+
+	botaoLimparFiltro.onclick = function() {
+		carregarDados();
+		this.style.display = 'none';
+	}
+
+	async function apagar(id) {
+		const url = `http://localhost:8000/api/agendas/deletar/${id}`;
+
+		let response = await fetch(url, {
+			method: 'DELETE',
+		}).then(window.location.replace('http://localhost:8000/agendas'));
+	}
+
+	function editar(id) {
+		window.location.href = `http://localhost:8000/agendas/editar/${id}`;
+	}
+
+	botaoCriar.onclick = function() {
+		window.location.href = 'http://localhost:8000/agendas/criar';
+	};
+
+	
+	
+	/********************** FUNÇÕES UTILITÁRIAS *************************/
+
+	function deixarResponsivo() {
+		const body = document.querySelector('body');
+		const header = document.querySelector('header');
+
+		const pageHeight = `${body.offsetHeight - header.offsetHeight}px`;
+		pagina.style.height = pageHeight;
+	}
+
+	deixarResponsivo();
+
+	function renderizarTabela(agendas) {
+		if(tableBody.innerHTML) {
+			tableBody.innerHTML = '';
+		}
+		agendas.forEach(agenda => {
+			let data = parseDate(agenda.data);
+
+			const tableRow = document.createElement('tr'),
+			editButton = `<button class="pure-button pure-button-primary" onclick="editar(${agenda.id})" id="${agenda.id}">Editar</button>`,
+			deleteButton = `<button class="pure-button button-error" onclick="apagar(${agenda.id})" id="${agenda.id}">Deletar</button>`,
+			rowData = `<td>${agenda.id}</td><td>${data}</td><td>${agenda.horario}</td><td>${agenda.cliente}</td><td>${agenda.telefone}</td><td>${agenda.observacao}</td><td>${editButton}${deleteButton}</td>`;
+
+			tableRow.innerHTML = rowData;
+
+			tableBody.appendChild(tableRow);
+		});
+	}
+
+	function parseDate(DateString) {
+    	const data = Array.from(DateString).splice('-');
+    	return `${data[8].toString()}${data[9].toString()}/${data[5].toString()}${data[6].toString()}/${data[0].toString()}${data[1].toString()}${data[2].toString()}${data[3].toString()}`;
+	}
+</script>

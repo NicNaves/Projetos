@@ -1,0 +1,16 @@
+<div id="info-resultado">
+	<h1>Não foi possível cadastrar o tratamento com os dados informados.</h1>
+	<h2>Por favor, tente novamente.</h2>
+	<button type="button" class="pure-button pure-button-primary">Voltar para Tratamentos</button>
+</div>
+<style>
+	button {
+		margin: 20px;
+	}
+</style>
+
+<script>
+	document.querySelector('button').onclick = function () {
+		window.location.replace('http://localhost:8000/tratamentos');
+	};
+</script>

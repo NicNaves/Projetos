@@ -1,0 +1,116 @@
+<div id="quadro-de-avisos">
+	<h1 style="text-align:center;">Avisos</h1>
+	<table class="pure-table pure-table-bordered" id="tabela-avisos">
+		<thead>
+			<tr>
+				<th style="width: 10%;">De:</th>
+				<th style="width: 10%;">Até:</th>
+				<th style="width: 30%;">Descrição:</th>
+				<th style="width: 3%;">Ações:</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	<button class="pure-button button-success" id="criar" style="text-align: center;">Criar Novo Aviso</button>
+</div>
+
+<style>
+    header {
+        position: fixed;
+    }
+    body {
+        display: flex;
+    }
+
+    #quadro-de-avisos{
+		display: flex;
+		flex-direction: column;
+        position: absolute;
+        width: 50%;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #quadro-de-avisos > table {
+        width: 100%;
+	}
+	
+	#criar {
+		width: 50%;
+		margin: 20px auto;
+	}
+</style>
+
+<script>
+	/********************** FUNÇÕES PARA DADOS *************************/
+
+	const table = document.querySelector('#tabela-avisos');
+	const tableBody = document.querySelector('#tabela-avisos > tbody');
+	
+	let avisosData;
+
+	async function carregarDados() {
+		const url = 'http://localhost:8000/api/avisos/index';
+		let response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json;charset=utf-8'
+			}
+		}).then(response => response.json()).then(result => {
+			avisosData = result;
+			renderizarTabela(result);
+		});
+	}
+
+	carregarDados();
+
+
+
+
+	/********************** FUNÇÕES PARA OS BOTÕES *************************/
+
+	const botaoBuscar = document.querySelector('#buscar');
+	const botaoCriar = document.querySelector('#criar');
+
+	async function apagar(id) {
+		const url = `http://localhost:8000/api/avisos/deletar/${id}`;
+
+		let response = await fetch(url, {
+			method: 'DELETE',
+		}).then(window.location.replace('http://localhost:8000/avisos'));
+	}
+
+	botaoCriar.onclick = function() {
+		window.location.href = 'http://localhost:8000/avisos/criar';
+	};
+
+
+	/********************** FUNÇÕES UTILITÁRIAS *************************/
+
+	function renderizarTabela(avisos) {
+		if(tableBody.innerHTML) {
+			tableBody.innerHTML = '';
+		}
+		avisos.forEach(aviso => {
+			let datade = parseDate(aviso.datade);
+			let dataate = parseDate(aviso.dataate);
+
+			const tableRow = document.createElement('tr'),
+			deleteButton = `<button class="pure-button button-error" onclick="apagar(${aviso.id})">Deletar</button>`,
+			rowData = `<td>${datade}</td><td>${dataate}</td><td>${aviso.descricao}</td><td>${deleteButton}</td>`;
+
+			tableRow.innerHTML = rowData;
+
+			tableBody.appendChild(tableRow);
+		});
+	}
+
+	function parseDate(DateString) {
+    	const data = Array.from(DateString).splice('-');
+    	return `${data[8].toString()}${data[9].toString()}/${data[5].toString()}${data[6].toString()}/${data[0].toString()}${data[1].toString()}${data[2].toString()}${data[3].toString()}`;
+	}
+</script>
+
+

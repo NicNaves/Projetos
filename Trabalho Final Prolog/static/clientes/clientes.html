@@ -1,0 +1,215 @@
+    <div id="pagina">
+        <div id="menu-clientes">
+            <div id="menu-clientes-inside">
+                <h1 class="title">Clientes</h1>
+                <h2 class="sub-title">Preencha somente uma opção:</h2>
+                <form class="pure-form pure-form-stacked" method="POST" action="/login">
+                    <label for="stacked-nome"><h3>Buscar por Nome:</h3></label>
+                    <input type="text" placeholder="Nome" name="nome">   
+                    <label for="stacked-codigo"><h3>Buscar por Código:</h3></label>
+                    <input type="text" placeholder="Código" name="codigo"">
+                    <label for="stacked-email"><h3>Buscar por e-mail:</h3></label>
+                    <input type="text" id="stacked-email" placeholder="E-mail" name="email"/>
+                    <label for="data-error" style="color: red; display: none;">Erro de preenchimento</label>
+                </form>
+                <button class="pure-button pure-button-primary" id="buscar" style="margin: 15px;">Buscar</button>
+                <button class="pure-button button-success" id="criar" style="margin: 15px;">Criar</button>
+                <button class="pure-button pure-button-primary" id="limpar-filtro" style="margin: 15px; display: none;">Limpar Filtro</button>
+                
+            </div>
+        </div>
+        <div id="table">
+        <table class="pure-table pure-table-bordered" id="tabela-clientes">
+          
+          <thead>
+                <tr>
+                    <th style="width: 10%;">Código</th>
+                    <th>Nome</th>
+                    <th style="width: 20%">Telefone</th>
+                    <th>Email</th>
+                    <th style="width: 18%;">Ações:</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+            </tbody> 
+        </table>
+      </div>
+    </div>
+<style>
+    #pagina {
+        display: flex;
+        height: 100%;
+    }
+    #menu-clientes {
+        position: relative;
+        width: 27%;
+        height: 100%;
+        text-align: center;
+        border-right: 1px solid #7c7c7c;;
+    }
+    #menu-clientes-inside {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    #menu-clientes form > * {
+        margin: 15px auto;
+        width: 60%;
+    }
+    #menu-clientes {
+        padding: 0px 0px;
+    }
+    
+    #tabela-clientes {
+        width: 100%;
+    }
+
+    #tabela-clientes > tbody > tr > td:nth-child(5) {
+      margin: auto auto;
+      text-align: center;
+    }
+    
+    #table {
+        position: relative;  
+        width: 100%;
+        overflow-y:scroll;
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    #menu-clientes-inside button {
+      width: 30%;
+    }
+</style>
+
+<script>
+	/********************** FUNÇÕES PARA DADOS *************************/
+
+	const table = document.querySelector('#tabela-clientes');
+	const tableBody = document.querySelector('#tabela-clientes > tbody');
+	const pagina = document.querySelector('#pagina');
+	
+	let clientesData;
+	
+	async function carregarDados() {
+		const url = 'http://localhost:8000/api/clientes/index';
+		let response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json;charset=utf-8'
+			}
+		}).then(response => response.json()).then(result => {
+			clientesData = result;
+			renderizarTabela(result);
+		});
+	}
+
+	carregarDados();
+
+
+
+
+	
+
+	/********************** FUNÇÕES PARA OS BOTÕES *************************/
+
+	const botaoBuscar = document.querySelector('#buscar');
+	const botaoLimparFiltro = document.querySelector('#limpar-filtro');
+	const botaoCriar = document.querySelector('#criar');
+
+	botaoBuscar.onclick = function() {
+		const campos = document.querySelectorAll('#menu-clientes-inside > form > input');
+		const errorLabel = document.querySelector('label[for=\'data-error\']');
+		const clearFilter = document.querySelector('#limpar-filtro');
+		if(campos[0].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const clientesFiltrados = clientesData.filter(cliente => cliente.nome.includes(campos[0].value));
+			renderizarTabela(clientesFiltrados);
+			clearFilter = document.querySelector('#limpar-filtro').style.display = 'initial';
+		}
+		else if (campos[1].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const clientesFiltrados = clientesData.filter(cliente => cliente.id == campos[1].value);
+			renderizarTabela(clientesFiltrados);
+			clearFilter = document.querySelector('#limpar-filtro').style.display = 'initial';
+		}
+		else if(campos[2].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const clientesFiltrados = clientesData.filter(cliente => cliente.email.includes(campos[2].value));
+			renderizarTabela(clientesFiltrados);
+			clearFilter = document.querySelector('#limpar-filtro').style.display = 'initial';
+		} 
+		else {
+			errorLabel.style.display = 'initial';
+		}
+	}
+
+	async function apagar(id) {
+		const url = `http://localhost:8000/api/clientes/deletar/${id}`;
+
+		let response = await fetch(url, {
+			method: 'DELETE',
+		}).then(window.location.replace('http://localhost:8000/clientes'));
+	}
+
+	function editar(id) {
+		window.location.href = `http://localhost:8000/clientes/editar/${id}`;
+	}
+
+
+	botaoCriar.onclick = function() {
+		window.location.href = 'http://localhost:8000/clientes/criar';
+	};
+
+	botaoLimparFiltro.onclick = function() {
+		carregarDados();
+		this.style.display = 'none';
+	}
+
+	
+	
+	
+	
+	/********************** FUNÇÕES UTILITÁRIAS *************************/
+
+	function renderizarTabela(clientes) {
+		if(tableBody.innerHTML) {
+			tableBody.innerHTML = '';
+		}
+		clientes.forEach(cliente => {
+			const tableRow = document.createElement('tr'),
+			editButton = `<button class="pure-button pure-button-primary" onclick="editar(${cliente.id})" id="${cliente.id}">Editar</button>`,
+			deleteButton = `<button class="pure-button button-error" onclick="apagar(${cliente.id})" id="${cliente.id}">Deletar</button>`,
+			rowData = `<td>${cliente.id}</td><td>${cliente.nome}</td><td>${cliente.telefone}</td><td>${cliente.email}</td><td>${editButton}${deleteButton}</td>`;
+
+			tableRow.innerHTML = rowData;
+
+			tableBody.appendChild(tableRow);
+		});
+	}
+
+	function deixarResponsivo() {
+		const body = document.querySelector('body');
+		const header = document.querySelector('header');
+
+		const pageHeight = `${body.offsetHeight - header.offsetHeight}px`;
+		pagina.style.height = pageHeight;
+	}
+
+	deixarResponsivo();
+
+</script>

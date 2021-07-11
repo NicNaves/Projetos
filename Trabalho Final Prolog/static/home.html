@@ -1,0 +1,79 @@
+<div class="CSSgal">
+        <!-- Don't wrap targets in parent -->
+        <s id="s1"></s> 
+        <s id="s2"></s>
+        <s id="s3"></s>
+        <s id="s4"></s>
+      
+        <div class="slider">
+            <div style="background-image: url('http://localhost:8000/images/1.jpg');">
+                <div class="slideshowtext">  
+                    <h2><strong>Bem-vindo à Sculpe</strong></h2>
+                    <p>Somos um centro de estética que busca excelência em terapias e em seus resultados, proporcionando saúde, beleza e bem-estar aos seus clientes.</p>
+                    <p>A seguir, conheça alguns de nossos valores:</p>
+                </div>
+            </div>
+            <div style="background-image: url('http://localhost:8000/images/2.png');">
+                <div class="slideshowtext">
+                    <h2><strong>Inovação</strong></h2>
+                    <p>Oferecemos o que há de mais inovador em tratamentos estéticos, para isso, contamos com uma equipe qualificada que está em constante atualização, atenta as novidades e aos mais recentes e eficientes metódos de tratamentos e conceitos no mercado mundial de beleza.</p>
+                </div>
+            </div>
+            
+            <div style="background-image: url('http://localhost:8000/images/3.jpg');">
+                <div class="slideshowtext">
+                    <h2><strong>Qualidade</strong></h2>
+                    <p>Nosso projeto se espelhou em refêrencias nacionais em saúde e beleza o que nos faz ocupar uma colocação especial no ranking das melhores clínicas de estética de Joinville.</p>
+                </div>
+            </div>
+            <div style="background-image: url('http://localhost:8000/images/4.jpg');">
+                <div class="slideshowtext">
+                    <h2><strong>Atendimento Humanizado</strong></h2>
+                    <p>Proporcionar aos clientes e colaboradores um ambiente agradável, estimulando a comunicação e relacionamentos baseados na confiança, transparência e lealdade.</p>
+                </div>
+            </div>
+        </div>
+        <div class="prevNext">
+          <div><a href="#s4"></a><a href="#s2"></a></div>
+          <div><a href="#s1"></a><a href="#s3"></a></div>
+          <div><a href="#s2"></a><a href="#s4"></a></div>
+          <div><a href="#s3"></a><a href="#s1"></a></div>
+        </div>
+      
+        <div class="bullets">
+          <a href="#s1">1</a>
+          <a href="#s2">2</a>
+          <a href="#s3">3</a>
+          <a href="#s4">4</a>
+        </div>  
+    </div>
+
+<style>
+    header {
+        position: fixed;
+    }
+</style>
+
+<script>
+    var currentSlideIndex = (window.location.hash) ? window.location.hash.charAt(2) : 1;
+    var nextSlideIndex = (window.location.hash) ? new Number(window.location.hash.slice(0, -1)) + 1 : 2;
+    
+    function changeSlide(actual, next) {
+        let newHref;
+        
+        if(window.location.hash) {
+            newHref = window.location.href.slice(0,-1) + next;
+        }
+        else {
+            newHref = window.location.href + `#s${next}`;
+        }
+       location.assign(newHref);
+    }
+
+    setInterval(function() {
+        if(currentSlideIndex == 4) { nextSlideIndex = 1; currentSlideIndex = 0 };
+        changeSlide(currentSlideIndex, nextSlideIndex);
+        currentSlideIndex++;
+        nextSlideIndex++;
+    }, 5000);
+</script>

@@ -1,0 +1,102 @@
+<div id="cadastro-cliente">
+	<h1>Cadastrar Cliente</h1>
+	<form class="pure-form pure-form-stacked" method="POST" action="/api/clientes/criar">
+		<label for="data-error" style="color: red; display: none;">Erro de preenchimento</label>
+
+		<label for="stacked-email"><h3>Nome</h3></label>
+		<input type="text" placeholder="Insira o nome completo" name="nome" style="margin-top: 10px;">  
+
+		<label for="stacked-email"><h3>CPF</h3></label>
+		<input type="text" placeholder="Insira o CPF" name="cpf" style="margin-top: 10px;">
+
+		<label for="aligned-date"><h3>Data de Nascimento</h3></label>
+		<input type="date" id="date" placeholder="Data" name="data" style="margin-top: 10px; margin-bottom: 10px;"/>
+
+		<label for="multi-state" name="sexo"><h3>Sexo</h3></label>
+			<select id="multi-state" name="sexo" class="pure-input-1-2">
+				<option value="masculino">Masculino</option>
+				<option value="feminino">Feminino</option>
+				<option value="outros">Outros</option>
+			</select>
+
+		<label for="stacked-email"><h3>Endereço</h3></label>
+		<input type="text" placeholder="Insira o logradouro e número" name="endereco" style="margin-top: 10px;">
+		
+		<label for="stacked-email"><h3>Bairro</h3></label>
+		<input type="text" placeholder="Insira o bairro" name="bairro" style="margin-top: 10px;">
+		
+		<label for="stacked-email"><h3>Cidade</h3></label>
+		<input type="text" placeholder="Insira a cidade" name="cidade" style="margin-top: 10px;">
+		
+		<label for="stacked-email"><h3>Estado</h3></label>
+		<select id="multi-state" name="estado" class="pure-input-1-2">
+			<option value="AC">Acre</option>
+			<option value="AL">Alagoas</option>
+			<option value="AP">Amapá</option>
+			<option value="AM">Amazonas</option>
+			<option value="BA">Bahia</option>
+			<option value="CE">Ceará</option>
+			<option value="DF">Distrito Federal</option>
+			<option value="ES">Espírito Santo</option>
+			<option value="GO">Goiás</option>
+			<option value="MA">Maranhão</option>
+			<option value="MT">Mato Grosso</option>
+			<option value="MS">Mato Grosso do Sul</option>
+			<option value="MG">Minas Gerais</option>
+			<option value="PA">Pará</option>
+			<option value="PB">Paraíba</option>
+			<option value="PR">Paraná</option>
+			<option value="PE">Pernambuco</option>
+			<option value="PI">Piauí</option>
+			<option value="RJ">Rio de Janeiro</option>
+			<option value="RN">Rio Grande do Norte</option>
+			<option value="RS">Rio Grande do Sul</option>
+			<option value="RO">Rondônia</option>
+			<option value="RR">Roraima</option>
+			<option value="SC">Santa Catarina</option>
+			<option value="SP">São Paulo</option>
+			<option value="SE">Sergipe</option>
+			<option value="TO">Tocantins</option>
+			<option value="EX">Estrangeiro</option>
+		</select>
+		
+		<label for="stacked-email"><h3>CEP</h3></label>
+		<input type="text" placeholder="Insira o CEP" name="cep" style="margin-top: 10px;">
+		
+		<label for="stacked-email"><h3>Telefone</h3></label>
+		<input type="text" placeholder="Insira o Telefone" name="telefone" style="margin-top: 10px;">
+		
+		<label for="stacked-email"><h3>E-mail</h3></label>
+		<input type="text" placeholder="Insira o endereço de e-mail" name="email" style="margin-top: 10px;">
+		
+		<label for="stacked-email"><h3>Profissão</h3></label>
+		<input type="text" placeholder="Insira o nome da profissão" name="profissao" style="margin-top: 10px;">
+		
+		<button type="submit" class="pure-button pure-button-primary" style="margin: 10px; margin-bottom: 20px;">Criar Usuário</button>
+	</form>
+</div>
+<style>
+	#cadastro-cliente {
+		width: 50%;
+		margin: auto auto;
+		text-align: center;
+		position:absolute;
+		top: 80%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#info-usuario {
+		border: 1px solid black;
+		background-color: white;
+	}
+
+	#cadastro-cliente form > * {
+		margin: 15px auto;
+		width: 70%;
+	}
+
+	#cadastro-cliente button {
+		width: 20%;
+	}
+</style>

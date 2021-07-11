@@ -1,0 +1,208 @@
+<div id="pagina">
+	<div id="menu-usuarios">
+		<div id="menu-usuarios-inside">
+			<h1 class="title">Usuarios</h1>
+			<h2 class="sub-title">Preencha somente uma opção:</h2>
+			<form class="pure-form pure-form-stacked">
+				<label for="stacked-nome"><h3>Buscar por Login:</h3></label>
+				<input type="text" placeholder="Nome" name="nome">   
+				<label for="stacked-codigo"><h3>Buscar por Código:</h3></label>
+				<input type="text" placeholder="Código" name="codigo"">
+				<label for="data-error" style="color: red; display: none;">Erro de preenchimento</label>
+			</form>
+			<button class="pure-button pure-button-primary" id="buscar" style="margin: 15px;">Buscar</button>
+			<button class="pure-button button-success" id="criar" style="margin: 15px;">Criar</button>
+			<button class="pure-button pure-button-primary" id="limpar-filtro" style="margin: 15px; display: none;">Limpar Filtro</button>
+			
+		</div>
+	</div>
+	<div id="table">
+	<table class="pure-table pure-table-bordered" id="tabela-usuarios">
+	  
+	  <thead>
+			<tr>
+				<th style="width: 7%;">Código</th>
+				<th style="width: 10%">Categoria</th>
+				<th style="width: 10%">Login</th>
+				<th style="width: 20%">Senha</th>
+				<th style="width: 25%">Nome</th>
+				<th style="width: 15%;">Ações:</th>
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+		</tbody> 
+	</table>
+  </div>
+</div>
+<style>
+	#pagina {
+		display: flex;
+		height: 100%;
+	}
+	#menu-usuarios {
+		position: relative;
+		width: 27%;
+		height: 100%;
+		text-align: center;
+		border-right: 1px solid #7c7c7c;;
+	}
+	#menu-usuarios-inside {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	#menu-usuarios form > * {
+		margin: 15px auto;
+		width: 60%;
+	}
+	#menu-usuarios {
+		padding: 0px 0px;
+	}
+
+	#tabela-usuarios {
+		width: 100%;
+	}
+
+	#tabela-usuarios > tbody > tr > td:nth-child(5) {
+	margin: auto auto;
+	}
+
+	#table {
+		position: relative;  
+		width: 100%;
+		overflow-y:scroll;
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	#menu-usuarios-inside button {
+	width: 30%;
+	}
+</style>
+
+<script>
+	/********************** FUNÇÕES PARA DADOS *************************/
+
+	const table = document.querySelector('#tabela-usuarios');
+	const tableBody = document.querySelector('#tabela-usuarios > tbody');
+	const pagina = document.querySelector('#pagina');
+	
+	let usuariosData;
+
+	async function carregarDados() {
+		const url = 'http://localhost:8000/api/usuarios/index';
+		let response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json;charset=utf-8'
+			}
+		}).then(response => response.json()).then(result => {
+			usuariosData = result;
+			renderizarTabela(result);
+		});
+	}
+
+	carregarDados();
+
+
+
+
+
+
+	/********************** FUNÇÕES PARA OS BOTÕES *************************/
+
+	const botaoBuscar = document.querySelector('#buscar');
+	const botaoLimparFiltro = document.querySelector('#limpar-filtro');
+	const botaoCriar = document.querySelector('#criar');
+
+	botaoBuscar.onclick = function() {
+		const campos = document.querySelectorAll('#menu-usuarios-inside > form > input');
+		const errorLabel = document.querySelector('label[for=\'data-error\']');
+		if(campos[0].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const usuariosFiltradas = usuariosData.filter(usuario => usuario.login.includes(campos[0].value));
+			renderizarTabela(usuariosFiltradas);
+			botaoLimparFiltro.style.display = 'initial';
+		}
+		else if (campos[1].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const usuariosFiltradas = usuariosData.filter(usuario => usuario.id == campos[1].value);
+			renderizarTabela(usuariosFiltradas);
+			botaoLimparFiltro.style.display = 'initial';
+		} 
+		else {
+			errorLabel.style.display = 'initial';
+		}
+	}
+
+	botaoLimparFiltro.onclick = function() {
+		carregarDados();
+		this.style.display = 'none';
+	}
+
+	async function apagar(id) {
+		const url = `http://localhost:8000/api/usuarios/deletar/${id}`;
+
+		let response = await fetch(url, {
+			method: 'DELETE',
+		}).then(window.location.replace('http://localhost:8000/usuarios'));
+	}
+
+	function editar(id) {
+		window.location.href = `http://localhost:8000/usuarios/editar/${id}`;
+	}
+
+	botaoCriar.onclick = function() {
+		window.location.href = 'http://localhost:8000/usuarios/criar';
+	};
+
+	
+
+
+
+
+	
+	/********************** FUNÇÕES UTILITÁRIAS *************************/
+
+	function deixarResponsivo() {
+		const body = document.querySelector('body');
+		const header = document.querySelector('header');
+
+		const pageHeight = `${body.offsetHeight - header.offsetHeight}px`;
+		pagina.style.height = pageHeight;
+	}
+
+	deixarResponsivo();
+
+	function renderizarTabela(usuarios) {
+		if(tableBody.innerHTML) {
+			tableBody.innerHTML = '';
+		}
+		usuarios.forEach(usuario => {
+			let categoria = usuario.categoria_usuario == 1 ? 'Gestor': 'Cliente';
+
+			const tableRow = document.createElement('tr'),
+			editButton = `<button class="pure-button pure-button-primary" onclick="editar(${usuario.id})" id="${usuario.id}">Editar</button>`,
+			deleteButton = `<button class="pure-button button-error" onclick="apagar(${usuario.id})" id="${usuario.id}">Deletar</button>`,
+			rowData = `<td>${usuario.id}</td><td>${categoria}</td><td>${usuario.login}</td><td>${usuario.senha}</td><td>${usuario.nome}</td><td>${editButton}${deleteButton}</td>`;
+
+			tableRow.innerHTML = rowData;
+
+			tableBody.appendChild(tableRow);
+		});
+	}
+
+</script>

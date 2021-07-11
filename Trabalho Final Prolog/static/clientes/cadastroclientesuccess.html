@@ -1,0 +1,15 @@
+<div id="info-resultado">
+	<h1>O usuário foi cadastrado com sucesso.</h1>
+	<button type="button" class="pure-button pure-button-primary">Voltar para Clientes</button>
+</div>
+<style>
+	button {
+		margin: 20px;
+	}
+</style>
+
+<script>
+	document.querySelector('button').onclick = function () {
+		window.location.replace('http://localhost:8000/clientes');
+	};
+</script>

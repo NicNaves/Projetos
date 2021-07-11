@@ -1,0 +1,39 @@
+header {
+    z-index: 1;
+    width: 100%;
+    background-color: #1b262c;
+ /*   position: fixed;*/
+    display: flex;
+}
+
+#top-menu {
+    background-color: #1b262c;
+}
+
+#top-menu a{
+    padding: 25px;   
+}
+.title {
+    margin: 0px 0px;
+}
+.sub-title {
+    margin: 0px;
+    color: #7c7c7c;
+    font-size: 1em;
+    
+}
+
+#fundo{
+	display: block;
+	background-color: #98FB98;
+}
+
+#info-resultado {
+	width: 50%;
+	margin: auto auto;
+	text-align: center;
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

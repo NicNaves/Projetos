@@ -1,0 +1,49 @@
+    <div id="secao-login"></div>
+    <div id="form-login">
+        <h1>Bem-Vindo à Sculpe!</h1>
+        <form class="pure-form pure-form-stacked" method="POST" action="/api/login">
+            <label for="stacked-email"><h2>Login</h2></label>
+            
+            <input type="text" placeholder="Login" name="login" style="margin-top: 15px;width:90%;">
+            <label for="stacked-password" style="margin: 15px;"><h2>Senha</h2></label>
+            <input type="password" id="stacked-password" placeholder="Password" name="password" style="margin-top: 10px; width:90%;"/>
+            <button type="submit" class="pure-button pure-button-primary" style="margin: 20px;">Fazer Login</button>
+        </form>
+    </div>
+<style>
+    #secao-login {
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        background-image: url("http://localhost:8000/images/3.jpg");
+        filter: blur(8px);
+        -webkit-filter: blur(8px); 
+    }
+    #form-login {
+        background-color: #1b262c79;
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 25%;
+        padding: 20px;
+        border: 1px solid #fff;
+    }
+
+    #form-login h1 {
+        color: #fff;
+        text-align:center;
+        font-family: sans-serif;
+    }
+    #form-login form {
+        text-align: center;
+    }
+    #form-login form > * {
+        margin-top: 25px;
+        margin: 0 auto;
+    }
+    #form-login label {
+        color: #fff;
+    }
+</style>

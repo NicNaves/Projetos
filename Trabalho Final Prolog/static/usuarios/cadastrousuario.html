@@ -1,0 +1,39 @@
+<div id="cadastro-usuario">
+	<h1>Cadastrar Usuário</h1>
+	<form class="pure-form pure-form-stacked" method="POST" action="/api/usuarios/criar">
+		<label for="stacked-email"><h2>Nome</h2></label>
+		<input type="text" placeholder="Nome" name="nome" style="margin-top: 15px;">   
+		<label for="stacked-email"><h2>Login</h2></label>
+		<input type="text" placeholder="Login" name="login" style="margin-top: 15px;">
+		<label for="stacked-password"><h2>Senha</h2></label>
+		<input type="password" id="stacked-password" placeholder="Password" name="password" style="margin-top: 15px; margin-bottom: 15px;"/>
+		<label for="multi-state"><h2>Categoria</h2></label>
+			<select id="multi-state" name="categoria" class="pure-input-1-2">
+				<option value="1">Gestor</option>
+				<option value="2">Cliente</option>
+			</select>
+		<label for="stacked-email"><h2>Id Cliente</h2></label>
+		<input type="text" placeholder="Para Gestores, utilizar sempre 1." name="idcliente" style="margin-top: 15px;">
+		<button type="submit" class="pure-button pure-button-primary" style="margin: 15px;">Criar Usuário</button>
+	</form>
+</div>
+<style>
+	#cadastro-usuario {
+		width: 50%;
+		margin: auto auto;
+		text-align: center;
+		position:absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#cadastro-usuario form > * {
+		margin: 15px auto;
+		width: 70%;
+	}
+
+	#cadastro-usuario button {
+		width: 20%;
+	}
+</style>

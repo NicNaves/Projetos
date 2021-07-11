@@ -1,0 +1,73 @@
+<div id="editar-tratamento">
+	<h1>Editar Tratamento</h1>
+	<form class="pure-form pure-form-stacked">
+
+		<input type="text" placeholder="" value="" disabled="" name="id" />
+
+		<label for="stacked-email"><h3>Nome</h3></label>
+		<input type="text" placeholder="Insira o nome do tratamento" name="nome" style="margin-top: 10px;">  
+
+		<label for="stacked-email"><h3>Duração da Sessão:</h3></label>
+		<input type="text" placeholder="Insira a duração" name="duracao" style="margin-top: 10px;">
+
+		<label for="stacked-email"><h3>Observação da Sessão:</h3></label>
+		<textarea class="pure-input-1-2" placeholder="Insira a observação" name="observacao"></textarea>
+		<button type="submit" class="pure-button pure-button-primary" style="margin: 10px; margin-bottom: 20px;">Editar Tratamento</button>
+	</form>
+</div>
+<style>
+	#editar-tratamento {
+		width: 50%;
+		margin: auto auto;
+		text-align: center;
+		position:absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#info-usuario {
+		border: 1px solid black;
+		background-color: white;
+	}
+
+	#editar-tratamento form > * {
+		margin: 15px auto;
+		width: 70%;
+	}
+
+	#editar-tratamento button {
+		width: 20%;
+	}
+</style>
+
+<script>
+	const form = document.querySelector('form');
+	const formData = document.querySelector('form').elements;
+	const tratamentoID = window.location.href.split('/')[5];
+	
+	document.querySelector('body').onload = function () {
+		formData[0].value = tratamentoID;
+	};
+
+
+	form.addEventListener('submit', async function(event) {
+		event.preventDefault();
+
+		const tratamento = {};
+
+		Array.from(formData).forEach(dado => {
+			tratamento[dado.name] = dado.value;
+		});
+
+		delete tratamento[''];
+		let response = await fetch(`http://localhost:8000/api/tratamentos/editar/${tratamentoID}`, {
+			method: 'PUT',
+			headers: {
+				'Content-type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify(tratamento)
+		}).then(response => window.location.replace('http://localhost:8000/tratamentos'));
+	});
+
+</script>

@@ -1,0 +1,206 @@
+<div id="pagina">
+	<div id="menu-tratamentos">
+		<div id="menu-tratamentos-inside">
+			<h1 class="title">Tratamentos</h1>
+			<h2 class="sub-title">Preencha somente uma opção:</h2>
+			<form class="pure-form pure-form-stacked" method="POST" action="/login">
+				<label for="stacked-nome"><h3>Buscar por Nome:</h3></label>
+				<input type="text" placeholder="Nome" name="nome">   
+				<label for="stacked-codigo"><h3>Buscar por Código:</h3></label>
+				<input type="text" placeholder="Código" name="codigo"">
+				<label for="data-error" style="color: red; display: none;">Erro de preenchimento</label>
+			</form>
+			<button class="pure-button pure-button-primary" id="buscar" style="margin: 15px;">Buscar</button>
+			<button class="pure-button button-success" style="margin: 15px;" id="criar">Criar</button>
+			<button class="pure-button pure-button-primary" id="limpar-filtro" style="margin: 15px; display: none;">Limpar Filtro</button>
+			
+		</div>
+	</div>
+	<div id="table">
+	<table class="pure-table pure-table-bordered" id="tabela-tratamentos">
+		
+		<thead>
+			<tr>
+				<th style="width: 10%;">Código</th>
+				<th style="width: 20%;">Nome</th>
+				<th>Duração</th>
+				<th>Descrição</th>
+				<th style="width: 18%;">Ações:</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		</tbody> 
+	</table>
+	</div>
+</div>
+
+<style>
+    #pagina {
+        display: flex;
+        height: 100%;
+    }
+    #menu-tratamentos {
+        position: relative;
+        width: 27%;
+        height: 100%;
+        text-align: center;
+        border-right: 1px solid #7c7c7c;;
+    }
+    #menu-tratamentos-inside {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    #menu-tratamentos form > * {
+        margin: 15px auto;
+        width: 60%;
+    }
+    #menu-tratamentos {
+        padding: 0px 0px;
+    }
+    
+    #tabela-tratamentos {
+        width: 100%;
+    }
+
+    #tabela-tratamentos > tbody > tr > td:nth-child(5) {
+      margin: auto auto;
+      text-align: center;
+    }
+    
+    #table {
+        position: relative;  
+        width: 100%;
+        overflow-y:scroll;
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    #menu-tratamentos-inside button {
+      width: 30%;
+    }
+</style>
+
+<script>
+	/********************** FUNÇÕES PARA DADOS *************************/
+
+	const table = document.querySelector('#tabela-usuarios');
+	const tableBody = document.querySelector('#tabela-tratamentos > tbody');
+	const pagina = document.querySelector('#pagina');
+
+	let tratamentosData;
+
+	async function carregarDados() {
+		const url = 'http://localhost:8000/api/tratamentos/index';
+		let response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json;charset=utf-8'
+			}
+		}).then(response => response.json()).then(result => {
+			tratamentosData = result;
+			renderizarTabela(result);
+		});
+	}
+
+	carregarDados();
+
+
+
+
+
+
+	/********************** FUNÇÕES PARA OS BOTÕES *************************/
+
+	const botaoBuscar = document.querySelector('#buscar');
+	const botaoLimparFiltro = document.querySelector('#limpar-filtro');
+	const botaoCriar = document.querySelector('#criar');
+
+	botaoBuscar.onclick = function() {
+		const campos = document.querySelectorAll('#menu-tratamentos-inside > form > input');
+		const errorLabel = document.querySelector('label[for=\'data-error\']');
+		const clearFilter = document.querySelector('#limpar-filtro');
+
+		if(campos[0].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const tratamentosFiltrados = tratamentosData.filter(tratamento => tratamento.nome.includes(campos[0].value));
+			renderizarTabela(tratamentosFiltrados);
+			botaoLimparFiltro.style.display = 'initial';
+		}
+		else if (campos[1].value) {
+			if(errorLabel.style.display != 'none') {
+				errorLabel.style.display = 'none';
+			}
+			const tratamentosFiltrados = tratamentosData.filter(tratamento => tratamento.id == campos[1].value);
+			renderizarTabela(tratamentosFiltrados);
+			botaoLimparFiltro.style.display = 'initial';
+		}
+		else {
+			errorLabel.style.display = 'initial';
+		}
+	}
+
+	botaoLimparFiltro.onclick = function() {
+		carregarDados();
+		this.style.display = 'none';
+	}
+
+	botaoCriar.onclick = function() {
+		window.location.href = 'http://localhost:8000/tratamentos/criar';
+	};
+
+	async function apagar(id) {
+		const url = `http://localhost:8000/api/tratamentos/deletar/${id}`;
+
+		let response = await fetch(url, {
+			method: 'DELETE',
+		}).then(window.location.replace('http://localhost:8000/tratamentos'));
+	}
+
+	function editar(id) {
+		window.location.href = `http://localhost:8000/tratamentos/editar/${id}`;
+	}
+
+
+
+
+
+	/********************** FUNÇÕES UTILITÁRIAS *************************/
+
+	function deixarResponsivo() {
+		const body = document.querySelector('body');
+		const header = document.querySelector('header');
+
+		const pageHeight = `${body.offsetHeight - header.offsetHeight}px`;
+		pagina.style.height = pageHeight;
+	}
+
+	deixarResponsivo();
+
+	function renderizarTabela(tratamentos) {
+		if(tableBody.innerHTML) {
+			tableBody.innerHTML = '';
+		}
+		tratamentos.forEach(tratamento => {
+			const tableRow = document.createElement('tr'),
+			editButton = `<button class="pure-button pure-button-primary" onclick="editar(${tratamento.id})" id="${tratamento.id}">Editar</button>`,
+			deleteButton = `<button class="pure-button button-error" onclick="apagar(${tratamento.id})" id="${tratamento.id}">Deletar</button>`,
+			rowData = `<td>${tratamento.id}</td><td>${tratamento.nome}</td><td>${tratamento.duracao}</td><td>${tratamento.observacao}</td><td>${editButton}${deleteButton}</td>`;
+
+			tableRow.innerHTML = rowData;
+
+			tableBody.appendChild(tableRow);
+		});
+	}
+
+</script>
